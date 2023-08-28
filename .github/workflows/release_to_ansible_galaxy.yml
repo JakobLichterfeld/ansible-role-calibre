@@ -1,7 +1,7 @@
 
 # see: https://github.com/geerlingguy/ansible-role-docker/blob/8bb277bd7fb7019eb129b4a07194f0364c060203/.github/workflows/release.yml
 name: Release Role to Ansible Galaxy
-'on':
+on:
   push:
     tags:
       - '*'
