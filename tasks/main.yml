@@ -1,0 +1,39 @@
+---
+# tasks file for calibre
+- name: Install block
+  block:
+    - name: Install dependencies
+      # dependencies see: https://calibre-ebook.com/download_linux
+      # ("You must have xdg-utils, wget, xz-utils and python ≥ 3.3 installed
+      # on your system before running the installer.")
+      ansible.builtin.package:
+        name:
+          - xdg-utils
+          - wget
+          - xz-utils
+          - python3
+        state: present
+
+    - name: Create Calibre download dir on remote host if it does not exist
+      ansible.builtin.file:
+        path: "{{ download_dir_on_remote_host }}/calibre"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+
+    - name: Download Binary Installer Script
+      become: true
+      become_user: "{{ ansible_user }}"
+      ansible.builtin.get_url:
+        url: "https://download.calibre-ebook.com/linux-installer.sh"
+        dest: "{{ download_dir_on_remote_host }}/calibre/linux-installer.sh"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: '0644'
+      register: calibre_installer
+
+    - name: Execute Binary Installer Script
+      #command, as this is the only way to run shell scripts in Ansible.
+      ansible.builtin.command:
+        cmd: "sh {{ download_dir_on_remote_host }}/calibre/linux-installer.sh"
+      when: calibre_installer.changed or calibre.force_update | bool
