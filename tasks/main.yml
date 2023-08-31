@@ -20,6 +20,7 @@
         state: directory
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
+        mode: '0755'
 
     - name: Download Binary Installer Script
       become: true
@@ -27,13 +28,14 @@
       ansible.builtin.get_url:
         url: "https://download.calibre-ebook.com/linux-installer.sh"
         dest: "{{ download_dir_on_remote_host }}/calibre/linux-installer.sh"
+        timeout: 60
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
         mode: '0644'
       register: calibre_installer
 
     - name: Execute Binary Installer Script
-      #command, as this is the only way to run shell scripts in Ansible.
+      # command, as this is the only way to run shell scripts in Ansible.
       ansible.builtin.command:
         cmd: "sh {{ download_dir_on_remote_host }}/calibre/linux-installer.sh"
       when: calibre_installer.changed or calibre.force_update | bool
