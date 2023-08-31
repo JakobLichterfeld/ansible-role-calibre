@@ -1,7 +1,7 @@
 # Ansible Role: Calibre
 
-[![CI](https://github.com/JakobLichterfeld/ansible-role-calibre/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-calibre/actions/workflows/ci.yml)
-[![Publish role on Ansible Galaxy](https://github.com/JakobLichterfeld/ansible-role-calibre/actions/workflows/publish_role_on_ansible_galaxy.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role-calibre/actions/workflows/publish_role_on_ansible_galaxy.yml)
+[![CI](https://github.com/JakobLichterfeld/ansible-role_calibre/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role_calibre/actions/workflows/ci.yml)
+[![Publish role on Ansible Galaxy](https://github.com/JakobLichterfeld/ansible-role_calibre/actions/workflows/publish_role_on_ansible_galaxy.yml/badge.svg?branch=main)](https://github.com/JakobLichterfeld/ansible-role_calibre/actions/workflows/publish_role_on_ansible_galaxy.yml)
 
 Install Calibre via Binary Installer Download.
 
