@@ -38,4 +38,5 @@
       # command, as this is the only way to run shell scripts in Ansible.
       ansible.builtin.command:
         cmd: "sh {{ download_dir_on_remote_host }}/calibre/linux-installer.sh"
+        creates: "/opt/calibre"
       when: calibre_installer.changed or calibre.force_update | bool
