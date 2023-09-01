@@ -6,12 +6,16 @@
       # dependencies see: https://calibre-ebook.com/download_linux
       # ("You must have xdg-utils, wget, xz-utils and python ≥ 3.3 installed
       # on your system before running the installer.")
+      # On servers, if you get an error about a missing libEGL, you might need
+      # to install some OpenGL packages such as libegl1 and libopengl0
       ansible.builtin.package:
         name:
           - xdg-utils
           - wget
           - xz-utils
           - python3
+          - libegl1
+          - libopengl0
         state: present
 
     - name: Create Calibre download dir on remote host if it does not exist
