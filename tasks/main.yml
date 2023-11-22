@@ -16,6 +16,7 @@
           - python3
           - libegl1
           - libopengl0
+          - libxcb-cursor0
         state: present
 
     - name: Create Calibre download dir on remote host if it does not exist
